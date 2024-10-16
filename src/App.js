@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import StockAlerts from "./Components/StockAlerts.tsx";
+import Portfolio from "./Components/Chatbot.tsx";
+import StockData from "./Components/StockData.tsx";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <nav>
+          <Link to="/livePrices" className="nav-button">
+            Live Prices
+          </Link>
+          <Link to="/stockAlerts" className="nav-button">
+            Set Alerts
+          </Link>
+          <Link to="/chatbot" className="nav-button">
+            Chat Bot
+          </Link>
+        </nav>
+        <Routes>
+          <Route path="/livePrices" element={<StockData />} />
+          <Route path="/stockAlerts" element={<StockAlerts />} />
+          <Route path="/chatbot" element={<Portfolio />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
-
 export default App;

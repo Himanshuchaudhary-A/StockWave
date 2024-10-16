@@ -1,0 +1,1 @@
+export const server_port = 'https://localhost:7178/stockTickerHub';
